@@ -16,7 +16,7 @@ Will also add a curated selection of local models, each kept separate for easy u
 
 ![](https://github.com/billwuhao/ComfyUI_Prompt-All-In-One/blob/main/images/deepseekv3.png)
 
-- Supports Qwen API.  Requires an API key. Obtain from [Alibaba Cloud Bailian](https://bailian.console.aliyun.com/?spm=a2c4g.11186623.0.0.3f7d7980x2Vg6r&apiKey=1#/api-key).  Then set the environment variable `DASHSCOPE_API_KEY = <your key>`.  Setup and usage instructions are the same as above. **Be sure to keep your key confidential and do not expose it in your workflows.** **On Windows, restarting your computer after adding the environment variable may be necessary for the change to take effect.**
+- Supports Qwen API.  Requires an API key. Obtain from [Alibaba Cloud Bailian](https://bailian.console.aliyun.com/?spm=a2c4g.11186623.0.0.3f7d7980x2Vg6r&apiKey=1#/api-key).  Then set the environment variable `DASHSCOPE_API_KEY = <your key>`.  Setup and usage instructions are the same as above. **Be sure to keep your key confidential and do not expose it in your workflows.** **On Windows, restarting your computer after adding the environment variable may be necessary for the change to take effect.** The Reasoning model with the suffix '_R' has a thought process.
 
 ![](https://github.com/billwuhao/ComfyUI_Prompt-All-In-One/blob/main/images/qwen1.png)
 

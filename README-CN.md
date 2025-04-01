@@ -16,7 +16,7 @@
 
 ![](https://github.com/billwuhao/ComfyUI_Prompt-All-In-One/blob/main/images/deepseekv3.png)
 
-- 支持 Qwen API, 申请 API 密钥, [阿里云百炼](https://bailian.console.aliyun.com/?spm=a2c4g.11186623.0.0.3f7d7980x2Vg6r&apiKey=1#/api-key), 然后新建环境变量 `DASHSCOPE_API_KEY = <your key>` 到系统环境变量中. 添加方法, 使用方法同上, **注意保密你的 key, 不要随工作流泄露**. **Windows 添加完环境变量可能需要重启电脑才会生效**.
+- 支持 Qwen API, 申请 API 密钥, [阿里云百炼](https://bailian.console.aliyun.com/?spm=a2c4g.11186623.0.0.3f7d7980x2Vg6r&apiKey=1#/api-key), 然后新建环境变量 `DASHSCOPE_API_KEY = <your key>` 到系统环境变量中. 添加方法, 使用方法同上, **注意保密你的 key, 不要随工作流泄露**. **Windows 添加完环境变量可能需要重启电脑才会生效**. 后缀为 “_R” 的推理模型有一个思维过程.
 
 ![](https://github.com/billwuhao/ComfyUI_Prompt-All-In-One/blob/main/images/qwen1.png)
 

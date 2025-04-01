@@ -1,0 +1,9 @@
+bitsandbytes
+accelerate
+qwen-vl-utils
+optimum
+transformers>=4.49
+openai
+pydub
+scipy
+google-genai

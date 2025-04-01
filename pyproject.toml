@@ -1,0 +1,15 @@
+[project]
+name = "prompt-all-in-one-mw"
+description = "Prompt Generator for Video, Audio, Image, and Text. A node for ComfyUI. Including Deepseek, Alibaba Cloud Qwen, Google Gemini, and locally selected models, etc."
+version = "1.0.0"
+license = {file = "LICENSE"}
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/billwuhao/ComfyUI_Prompt-All-In-One"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = "mw"
+DisplayName = "ComfyUI_Prompt-All-In-One"
+Icon = ""

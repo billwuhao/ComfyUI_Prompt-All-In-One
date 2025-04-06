@@ -509,6 +509,10 @@ class APIQwenAudio2Text:
             base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
         )
 
+        audio_data = audio_tensor_to_mp3_base64(
+                                audio["waveform"].squeeze(0),
+                                audio["sample_rate"]
+                            )
         messages=[
             {
                 "role": "system",
@@ -519,10 +523,7 @@ class APIQwenAudio2Text:
                     {
                         "type": "input_audio",
                         "input_audio": {
-                            "data": f"data:;base64,{audio_tensor_to_mp3_base64(
-                                audio["waveform"].squeeze(0),
-                                audio["sample_rate"],
-                            )}",
+                            "data": f"data:;base64,{audio_data}",
                             "format": "mp3",
                         },
                     },

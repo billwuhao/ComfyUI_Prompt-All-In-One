@@ -8,7 +8,7 @@ from .qwen import (
 )
 from .deepseek import DeepSeekV3, DeepSeekR1
 from .gemini import APIGeminiTextGen, APIGeminiImgOrAudioOrVideo2Text, APIGeminiImageGen
-
+from .joycaption import JoyCaptionRun
 
 NODE_CLASS_MAPPINGS = {
     "DeepSeekV3": DeepSeekV3,
@@ -22,6 +22,7 @@ NODE_CLASS_MAPPINGS = {
     "APIGeminiTextGen": APIGeminiTextGen,
     "APIGeminiImgOrAudioOrVideo2Text": APIGeminiImgOrAudioOrVideo2Text,
     "APIGeminiImageGen": APIGeminiImageGen,
+    "JoyCaptionRun": JoyCaptionRun,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -36,4 +37,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "APIGeminiTextGen": "API Gemini Text Gen",
     "APIGeminiImgOrAudioOrVideo2Text": "API Gemini ImgOrAudioOrVideo2Text",
     "APIGeminiImageGen": "API Gemini Image Gen",
+    "JoyCaptionRun": "JoyCaption Run"
 }

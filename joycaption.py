@@ -329,7 +329,9 @@ def pil2tensor(image):
 
 
 class JoyCaptionRun:
-    model_cache = None
+    def __init__(self):
+        self.model_cache = None
+
     @classmethod
     def INPUT_TYPES(s):
         return {
@@ -401,10 +403,10 @@ class JoyCaptionRun:
             prompt = preset_prompt.rsplit("-", 1)[0]
         
         model = os.path.join(model_path, model)
-        if JoyCaptionRun.model_cache is None:
-            JoyCaptionRun.model_cache = JoyCaption(model, nf4)
+        if self.model_cache is None:
+            self.model_cache = JoyCaption(model, nf4)
         
-        JC = JoyCaptionRun.model_cache
+        JC = self.model_cache
 
         save_img_prompt_to_folder = save_img_prompt_to_folder.strip() if save_img_prompt_to_folder.strip() != "" else None
 
@@ -446,7 +448,7 @@ class JoyCaptionRun:
             import gc
             JC.clean()
             JC = None
-            JoyCaptionRun.model_cache = None
+            self.model_cache = None
             gc.collect()
             torch.cuda.empty_cache()
 

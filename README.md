@@ -2,11 +2,13 @@
 
 # ComfyUI Nodes for Generating Prompts for All Media Creations (Image, Video, Audio, Text)
 
-Currently supports DeepSeek-R1/V3, Alibaba Cloud Qwen (almost all models), and Google Gemini (including the `gemini-2.0-flash-exp-image-generation` model for image editing with your mouth). More useful APIs will be added in the future.  Contributions with useful APIs are welcome.
+Currently supports DeepSeek-R1/V3, Alibaba Cloud Qwen (almost all models), and Google Gemini. More useful APIs will be added in the future.  Contributions with useful APIs are welcome.
 
 Will also add a curated selection of local models, each kept separate for easy use.  Just download the ones you want.
 
 ## 📣 Updates
+
+[2025-05-10] ⚒️: Support for the latest Gemini model, `Gemini-2.5-pro-proview-05-06` requires payment. Support the latest `Qwen3`.
 
 [2025-04-12] ⚒️: JoyCaption support added.
 
@@ -27,31 +29,13 @@ Manually download the models and place them in the `LLM` folder:
 
 ![](https://github.com/billwuhao/ComfyUI_Prompt-All-In-One/blob/main/images/deepseekr1.png)
 
-![](https://github.com/billwuhao/ComfyUI_Prompt-All-In-One/blob/main/images/deepseekv3.png)
-
 - Supports Qwen API.  Requires an API key. Obtain from [Alibaba Cloud Bailian](https://bailian.console.aliyun.com/?spm=a2c4g.11186623.0.0.3f7d7980x2Vg6r&apiKey=1#/api-key).  Then set the environment variable `DASHSCOPE_API_KEY = <your key>`.  Setup and usage instructions are the same as above. **Be sure to keep your key confidential and do not expose it in your workflows.** **On Windows, restarting your computer after adding the environment variable may be necessary for the change to take effect.** The Reasoning model with the suffix '_R' has a thought process.
 
 ![](https://github.com/billwuhao/ComfyUI_Prompt-All-In-One/blob/main/images/qwen1.png)
 
-![](https://github.com/billwuhao/ComfyUI_Prompt-All-In-One/blob/main/images/qwen2.png)
-
-![](https://github.com/billwuhao/ComfyUI_Prompt-All-In-One/blob/main/images/qwen3.png)
-
-![](https://github.com/billwuhao/ComfyUI_Prompt-All-In-One/blob/main/images/qwen4.png)
-
-![](https://github.com/billwuhao/ComfyUI_Prompt-All-In-One/blob/main/images/qwen5.png)
-
-![](https://github.com/billwuhao/ComfyUI_Prompt-All-In-One/blob/main/images/qwen6.png)
-
 - Supports Gemini API.  Requires an API key. Obtain from [Google AI Studio](https://aistudio.google.com/app/apikey).  Then set the environment variable `GOOGLE_API_KEY = <your key>`. Setup and usage instructions are the same as above. **Be sure to keep your key confidential and do not expose it in your workflows.** **On Windows, restarting your computer after adding the environment variable may be necessary for the change to take effect.**
 
 ![](https://github.com/billwuhao/ComfyUI_Prompt-All-In-One/blob/main/images/gemini1.png)
-
-![](https://github.com/billwuhao/ComfyUI_Prompt-All-In-One/blob/main/images/gemini2.png)
-
-![](https://github.com/billwuhao/ComfyUI_Prompt-All-In-One/blob/main/images/gemini3.png)
-
-![](https://github.com/billwuhao/ComfyUI_Prompt-All-In-One/blob/main/images/gemini4.png)
 
 ## Installation
 

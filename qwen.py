@@ -53,7 +53,11 @@ class APIQwenTextGen:
                         "qwen-max-latest",
                         "qwen2.5-7b-instruct-1m",
                         "qwen2.5-14b-instruct-1m",
-                        "deepseek-v3"
+                        "deepseek-v3",
+                        "qwen-plus-latest",
+                        "qwen-turbo-latest",
+                        "qwen3-235b-a22b",
+                        "qwen3-30b-a3b"
                     ],
                     {"default": "qwen-max-latest"},
                 ),

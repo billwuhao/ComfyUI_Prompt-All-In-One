@@ -136,12 +136,14 @@ class APIGeminiImgOrAudioOrVideo2Text:
                 "model": (
                     [
                         "gemini-2.5-pro-exp-03-25",
+                        "gemini-2.5-flash-preview-04-17",
+                        "gemini-2.5-pro-preview-05-06",
                         "gemini-2.0-flash",
                         "gemini-2.0-flash-exp-image-generation",
                         "gemini-2.0-flash-thinking-exp-01-21",
                         "gemini-1.5-flash",
                     ],
-                    {"default": "gemini-2.5-pro-exp-03-25"},
+                    {"default": "gemini-2.5-pro-preview-05-06"},
                 ),
                 "proxy": ("STRING", {"default": "http://127.0.0.1:None", "multiline": False}),
                 "temperature": ("FLOAT", {"default": 0.9, "min": 0.0, "max": 1.5}),
@@ -244,6 +246,7 @@ class APIGeminiImageGen:
                 "model": (
                     [
                         "gemini-2.0-flash-exp-image-generation",
+                        "gemini-2.0-flash-preview-image-generation",
                     ],
                     {"default": "gemini-2.0-flash-exp-image-generation"},
                 ),

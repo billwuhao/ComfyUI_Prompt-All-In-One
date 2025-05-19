@@ -7,10 +7,11 @@ from .qwen import (
     APIQwenAudio2Text,
 )
 from .deepseek import DeepSeekV3, DeepSeekR1
-from .gemini import APIGeminiTextGen, APIGeminiImgOrAudioOrVideo2Text, APIGeminiImageGen
+from .gemini import APIGeminiTextGen, APIGeminiImgOrAudioOrVideo2Text, APIGeminiImageGen, APIGeminiTextUnderstand
 from .joycaption import JoyCaptionRun
 
 NODE_CLASS_MAPPINGS = {
+    "APIGeminiTextUnderstand": APIGeminiTextUnderstand,
     "DeepSeekV3": DeepSeekV3,
     "DeepSeekR1": DeepSeekR1,
     "APIQwenTextGen": APIQwenTextGen,
@@ -26,6 +27,7 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
+    "APIGeminiTextUnderstand": "API Gemini Text Understand",
     "DeepSeekV3": "DeepSeek V3",
     "DeepSeekR1": "DeepSeek R1",
     "APIQwenTextGen": "API Qwen Text Gen",

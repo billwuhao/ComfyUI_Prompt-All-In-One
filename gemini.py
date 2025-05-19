@@ -8,6 +8,9 @@ import numpy as np
 import torch
 from google import genai
 from google.genai import types
+import pathlib
+import httpx
+import mimetypes
 
 
 def imgtensor_to_bytes(tensor):
@@ -230,6 +233,90 @@ class APIGeminiImgOrAudioOrVideo2Text:
         response = client.models.generate_content(
             model=model,
             contents=contents,
+            config=get_config(temperature, top_p, top_k, max_output_tokens, seed),
+        )
+
+        return (response.text,)
+
+
+class APIGeminiTextUnderstand:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "api_key": ("STRING", {"default": "", "multiline": False}),
+                "text_path": ("STRING", {"default": "", "multiline": False}),
+                "prompt": ("STRING", {"default": "", "multiline": True}),
+                "model": (
+                    [
+                        "gemini-2.5-pro-exp-03-25",
+                        "gemini-2.5-flash-preview-04-17",
+                        "gemini-2.5-pro-preview-05-06",
+                        "gemini-2.0-flash",
+                        "gemini-2.0-flash-exp-image-generation",
+                        "gemini-2.0-flash-thinking-exp-01-21",
+                        "gemini-1.5-flash",
+                    ],
+                    {"default": "gemini-2.5-pro-preview-05-06"},
+                ),
+                "proxy": ("STRING", {"default": "http://127.0.0.1:None", "multiline": False}),
+                "temperature": ("FLOAT", {"default": 0.9, "min": 0.0, "max": 1.5}),
+                "top_p": ("FLOAT", {"default": 0.9, "min": 0.0, "max": 1.0}),
+                "top_k": ("INT", {"default": 40, "min": 0, "max": 100}),
+                "max_output_tokens": ("INT", {"default": 2048, "min": 0, "max": 65536}),
+                "seed": ("INT", {"default": 0, "min": 0, "max": 0xfffffff}),
+            },
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("text",)
+    FUNCTION = "generate"
+    CATEGORY = "🎤MW/MW-Prompt-All-In-One"
+
+    def generate(
+        self,
+        api_key,
+        text_path,
+        prompt,
+        model,
+        proxy,
+        temperature, 
+        top_p, 
+        top_k, 
+        max_output_tokens,
+        seed,
+    ):
+        if proxy.strip() != "" or proxy.strip() != "http://127.0.0.1:None":
+            os.environ["http_proxy"] = proxy
+            os.environ["https_proxy"] = proxy
+            os.environ['NO_PROXY'] = "localhost,127.0.0.1"
+
+        if os.getenv("GOOGLE_API_KEY") is not None:
+            API_KEY = os.getenv("GOOGLE_API_KEY")
+        elif api_key.strip() != "":
+            API_KEY = api_key
+        else:
+            raise ValueError("API Key is not set")
+                
+        client = genai.Client(
+            api_key=API_KEY,
+        )
+
+        local_filepath = pathlib.Path(text_path)
+        mimetype = mimetypes.guess_type(local_filepath)[0]
+        if mimetype is None:
+            raise ValueError(f"Unknown file type: {local_filepath}")
+        if not local_filepath.exists():
+            raise ValueError(f"File not found: {local_filepath}")
+
+        response = client.models.generate_content(
+            model=model,
+            contents=[
+                types.Part.from_bytes(
+                    data=local_filepath.read_bytes(),
+                    mime_type=mimetype,
+                ),
+                prompt],
             config=get_config(temperature, top_p, top_k, max_output_tokens, seed),
         )
 

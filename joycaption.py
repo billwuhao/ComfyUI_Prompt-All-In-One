@@ -327,11 +327,8 @@ def tensor2pil(image):
 def pil2tensor(image):
     return torch.from_numpy(np.array(image).astype(np.float32) / 255.0).unsqueeze(0)
 
-
+MODEL_CACHE = None
 class JoyCaptionRun:
-    def __init__(self):
-        self.model_cache = None
-
     @classmethod
     def INPUT_TYPES(s):
         return {
@@ -403,10 +400,11 @@ class JoyCaptionRun:
             prompt = preset_prompt.rsplit("-", 1)[0]
         
         model = os.path.join(model_path, model)
-        if self.model_cache is None:
-            self.model_cache = JoyCaption(model, nf4)
+        global MODEL_CACHE
+        if MODEL_CACHE is None:
+            MODEL_CACHE = JoyCaption(model, nf4)
         
-        JC = self.model_cache
+        JC = MODEL_CACHE
 
         save_img_prompt_to_folder = save_img_prompt_to_folder.strip() if save_img_prompt_to_folder.strip() != "" else None
 
@@ -448,7 +446,7 @@ class JoyCaptionRun:
             import gc
             JC.clean()
             JC = None
-            self.model_cache = None
+            MODEL_CACHE = None
             gc.collect()
             torch.cuda.empty_cache()
 

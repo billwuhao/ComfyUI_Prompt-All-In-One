@@ -9,6 +9,9 @@ from .qwen import (
 from .deepseek import DeepSeekV3, DeepSeekR1
 from .gemini import APIGeminiTextGen, APIGeminiImgOrAudioOrVideo2Text, APIGeminiImageGen, APIGeminiTextUnderstand
 from .joycaption import JoyCaptionRun
+from .ollama_prompt_gen import OllamaPromptGen
+from .audio_to_prompt import KeOmniRRun, MultiLinePromptKOR
+
 
 NODE_CLASS_MAPPINGS = {
     "APIGeminiTextUnderstand": APIGeminiTextUnderstand,
@@ -24,6 +27,9 @@ NODE_CLASS_MAPPINGS = {
     "APIGeminiImgOrAudioOrVideo2Text": APIGeminiImgOrAudioOrVideo2Text,
     "APIGeminiImageGen": APIGeminiImageGen,
     "JoyCaptionRun": JoyCaptionRun,
+    "OllamaPromptGen": OllamaPromptGen,
+    "KeOmniRRun": KeOmniRRun,
+    "MultiLinePromptKOR": MultiLinePromptKOR,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -39,5 +45,8 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "APIGeminiTextGen": "API Gemini Text Gen",
     "APIGeminiImgOrAudioOrVideo2Text": "API Gemini ImgOrAudioOrVideo2Text",
     "APIGeminiImageGen": "API Gemini Image Gen",
-    "JoyCaptionRun": "JoyCaption Run"
+    "JoyCaptionRun": "JoyCaption Run",
+    "OllamaPromptGen": "Ollama Prompt Generate",
+    "KeOmniRRun": "Ke-Omni-R Audio2Text",
+    "MultiLinePromptKOR": "MultiLine Prompt",
 }

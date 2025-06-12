@@ -7,3 +7,5 @@ openai
 pydub
 scipy
 google-genai
+ollama
+qwen_omni_utils

@@ -52,7 +52,9 @@ class JoyCaption:
                                         bnb_4bit_quant_type="nf4", 
                                         bnb_4bit_quant_storage=torch.bfloat16,
                                         bnb_4bit_use_double_quant=True, 
-                                        bnb_4bit_compute_dtype=torch.bfloat16)
+                                        bnb_4bit_compute_dtype=torch.bfloat16,
+                                        # llm_int8_skip_modules=["vision_tower", "multi_modal_projector"],
+                                        )
         
         self.tokenizer = AutoTokenizer.from_pretrained(model, use_fast=True)
         assert isinstance(self.tokenizer, PreTrainedTokenizer) or isinstance(self.tokenizer, PreTrainedTokenizerFast), f"Tokenizer is of type {type(self.tokenizer)}"
@@ -329,6 +331,8 @@ def pil2tensor(image):
 
 MODEL_CACHE = None
 class JoyCaptionRun:
+    def __init__(self):
+        self.model_name = None
     @classmethod
     def INPUT_TYPES(s):
         return {
@@ -340,8 +344,10 @@ class JoyCaptionRun:
                     [
                         "llama-joycaption-alpha-two-hf-llava-nf4",
                         "llama-joycaption-alpha-two-hf-llava",
+                        "llama-joycaption-beta-one-hf-llava",
+                        "llama-joycaption-beta-one-hf-llava-nf4",
                     ],
-                    {"default": "llama-joycaption-alpha-two-hf-llava-nf4"},
+                    {"default": "llama-joycaption-beta-one-hf-llava-nf4"},
                 ),
                 "use_cache": ("BOOLEAN", {"default": True}),
                 "do_sample": ("BOOLEAN", {"default": True}),
@@ -391,7 +397,7 @@ class JoyCaptionRun:
             torch.cuda.manual_seed_all(seed)
 
         nf4 = False
-        if model == "llama-joycaption-alpha-two-hf-llava-nf4":
+        if model == "llama-joycaption-alpha-two-hf-llava-nf4" or model == "llama-joycaption-beta-one-hf-llava-nf4":
             nf4 = True
         
         if preset_prompt != "None":
@@ -401,7 +407,8 @@ class JoyCaptionRun:
         
         model = os.path.join(model_path, model)
         global MODEL_CACHE
-        if MODEL_CACHE is None:
+        if MODEL_CACHE is None or self.model_name != model:
+            self.model_name = model
             MODEL_CACHE = JoyCaption(model, nf4)
         
         JC = MODEL_CACHE
